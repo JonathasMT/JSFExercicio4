@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Lista de Produtos</title>
+</h:head>
+<h:body>
+	<h:form>
+	<h:commandLink value="Cadastro de Venda" action="cadastroVenda.xhtml" immediate="true"/>
+	<br></br>
+	<h:commandLink value="Lista de Venda" action="listarVenda.xhtml" immediate="true"/>
+	<h1>Lista de Produtos</h1>
+	<h:messages/>
+	<h:dataTable 
+	border="1" value="#{vendaControllerJoanatas.lista}" 
+	var="control">
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Id"/>
+		</f:facet>
+		<h:outputText value="#{control.id}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Produto"/>
+		</f:facet>
+		<h:outputText value="#{control.produto}"/>
+	</h:column>
+	
+	</h:dataTable>
+	</h:form>
+</h:body>
+</html>

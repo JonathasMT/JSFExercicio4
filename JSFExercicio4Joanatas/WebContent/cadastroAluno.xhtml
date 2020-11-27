@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de Aluno</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Lista de Alunos" action="listarAluno.xhtml" immediate="true"/>
+		<h1>Cadastro de Aluno</h1>
+		<h:messages/>
+		<h:panelGrid columns="2">
+		
+			<h:outputText value="Nome: *" />
+			<h:inputText value="#{alunoControllerJoanatas.alunoJoanatas.nomeAluno}"
+			required="true"
+			requiredMessage="O campo Nome é obrigatorio" 
+			maxlength="100" />
+			
+			<h:outputText value="Idade: *" />
+			<h:inputText value="#{alunoControllerJoanatas.alunoJoanatas.idadeAluno}"
+			required="true"
+			requiredMessage="O campo Idade é obrigatorio">
+			<f:validateDoubleRange minimum="2" maximum="119"/>
+			</h:inputText>
+			
+			<h:outputText value="Grau de Instrução: *" />
+			<h:inputText value="#{alunoControllerJoanatas.alunoJoanatas.grauIntrucao}"
+			required="true"
+			requiredMessage="O campo Grau de Instrução é obrigatorio" 
+			maxlength="100" />
+			
+			<h:outputText value="Data de Cadastro: *" />
+			<h:inputText value="#{alunoControllerJoanatas.alunoJoanatas.dataCadastro}"
+			required="true"
+			requiredMessage="O campo Data de Cadastro é obrigatorio">
+			<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+			</h:inputText>
+			
+			<h:commandButton value="Salvar" action="#{alunoControllerJoanatas.salvar}"/>
+			
+			<h:commandButton value="Limpar" action="cadastroAluno.xhtml" 
+			actionListener="#{alunoControllerJoanatas.limparCampos}"
+			immediate="true"/>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+
+</html>

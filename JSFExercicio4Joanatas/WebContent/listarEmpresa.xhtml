@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Lista de Empresa</title>
+</h:head>
+<h:body>
+	<h:form>
+	<h:commandLink value="Cadastro de Empresa" action="cadastroEmpresa.xhtml" immediate="true"/>
+	<h1>Lista de Empresa</h1>
+	<h:messages/>
+	<h:dataTable 
+	border="1" value="#{empresaControllerJoanatas.lista}" 
+	var="control">
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Id"/>
+		</f:facet>
+		<h:outputText value="#{control.id}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Nome Fantasia"/>
+		</f:facet>
+		<h:outputText value="#{control.nomeFantasia}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="CNPJ"/>
+		</f:facet>
+		<h:outputText value="#{control.cnpj}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Endereço"/>
+		</f:facet>
+		<h:outputText value="#{control.endereco}"/>
+	</h:column>
+
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Data de Cadastro"/>
+		</f:facet>
+		<h:outputText value="#{control.dataCadastro}">
+			<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+		</h:outputText>
+	</h:column>
+
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Ação"/>
+		</f:facet>
+		
+		<h:commandButton value="Editar" action="#{empresaControllerJoanatas.editar}">
+			<f:setPropertyActionListener value="#{control}" target="#{empresaControllerJoanatas.empresaJoanatas}"/>
+		</h:commandButton>
+		
+		<h:commandButton value="Excluir" action="#{empresaControllerJoanatas.excluir}">
+			<f:setPropertyActionListener value="#{control}" target="#{empresaControllerJoanatas.empresaJoanatas}"/>
+		</h:commandButton>
+	</h:column>
+	
+	</h:dataTable>
+	</h:form>
+</h:body>
+</html>

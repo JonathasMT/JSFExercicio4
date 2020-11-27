@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de Livro</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Lista de Livros" action="listarBiblioteca.xhtml" immediate="true"/>
+		<h1>Cadastro de Livro</h1>
+		<h:messages/>
+		<h:panelGrid columns="2">
+		
+			<h:outputText value="Nome do Livro: *" />
+			<h:inputText value="#{bibliotecaControllerJoanatas.bibliotecaJoanatas.nomeLivro}"
+			required="true"
+			requiredMessage="O campo Nome do Livro é obrigatorio" 
+			maxlength="60" />
+				
+			<h:outputText value="Editora: *" />
+			<h:inputText value="#{bibliotecaControllerJoanatas.bibliotecaJoanatas.editora}"
+			required="true"
+			requiredMessage="O campo Editora é obrigatorio"
+			maxlength="60" />
+			
+			<h:outputText value="Valor do Livro: *" />
+			<h:inputText value="#{bibliotecaControllerJoanatas.bibliotecaJoanatas.valor}"
+			required="true"
+			requiredMessage="O campo Valor do Livro é obrigatorio">
+			<f:validateDoubleRange minimum="0.2" maximum="1999.99"/>
+			<f:convertNumber pattern="#,##0.00"/>
+			</h:inputText>
+			
+			<h:outputText value="Data de Cadastro: *" />
+			<h:inputText value="#{bibliotecaControllerJoanatas.bibliotecaJoanatas.dataCadastro}"
+			required="true"
+			requiredMessage="O campo Data de Cadastro é obrigatorio">
+			<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+			</h:inputText>
+					
+			<h:commandButton value="Salvar" action="#{bibliotecaControllerJoanatas.salvar}"/>
+			
+			<h:commandButton value="Limpar" action="cadastroBiblioteca.xhtml" 
+			actionListener="#{bibliotecaControllerJoanatas.limparCampos}"
+			immediate="true"/>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+
+</html>

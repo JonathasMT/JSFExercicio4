@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Lista de Vendas</title>
+</h:head>
+<h:body>
+	<h:form>
+	<h:commandLink value="Cadastro de Venda" action="cadastroVenda.xhtml" immediate="true"/>
+	<br></br>
+	<h:commandLink value="Lista de Produtos" action="listarVendaProduto.xhtml" immediate="true"/>
+	<h1>Lista de Vendas</h1>
+	<h:messages/>
+	<h:dataTable 
+	border="1" value="#{vendaControllerJoanatas.lista}" 
+	var="control">
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Id"/>
+		</f:facet>
+		<h:outputText value="#{control.id}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Cliente"/>
+		</f:facet>
+		<h:outputText value="#{control.cliente}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Produto"/>
+		</f:facet>
+		<h:outputText value="#{control.produto}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Valor do produto"/>
+		</f:facet>
+		<h:outputText value="#{control.valor}">
+			<f:convertNumber pattern="#,##0.00"/>
+		</h:outputText>
+	</h:column>
+
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Data da venda"/>
+		</f:facet>
+		<h:outputText value="#{control.dataVenda}">
+			<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+		</h:outputText>
+	</h:column>
+
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Ação"/>
+		</f:facet>
+		
+		<h:commandButton value="Editar" action="#{vendaControllerJoanatas.editar}">
+			<f:setPropertyActionListener value="#{control}" target="#{vendaControllerJoanatas.vendaJoanatas}"/>
+		</h:commandButton>
+		
+		<h:commandButton value="Excluir" action="#{vendaControllerJoanatas.excluir}">
+			<f:setPropertyActionListener value="#{control}" target="#{vendaControllerJoanatas.vendaJoanatas}"/>
+		</h:commandButton>
+	</h:column>
+	
+	</h:dataTable>
+	</h:form>
+</h:body>
+</html>
